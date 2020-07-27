@@ -1,0 +1,22 @@
+.app {
+  width: 90vw;
+  position: relative;
+  box-sizing: border-box;
+  padding: 16px;
+  margin: 10px 0;
+  background-color: white;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 300;
+  color: #252A31;
+  letter-spacing: -0.02;
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    margin-left: 42px;
+    margin-bottom: 15px;
+    letter-spacing: normal;
+    
+  }
+}

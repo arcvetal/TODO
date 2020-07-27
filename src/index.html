@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <div class="app">
+    <h1 class="app__title">Задачи</h1>
+    <div class="delete-icon"></div>
+    <div class="task-list">
+      <div class="task task--work">
+        <div class="task__ready"></div>
+        <p class="task__text">Начать делать презентацию</p>
+      </div>
+  
+      <div class="task task--personal task--done">
+        <div class="task__ready task__ready--done"></div>
+        <p class="task__text task__text--done">Заплатить за аренду</p>
+      </div>
+  
+      <div class="task task--shopping">
+        <div class="task__ready"></div>
+        <p class="task__text">Купить молоко</p>
+      </div>
+  
+      <div class="task task--family">
+        <div class="task__ready"></div>
+        <p class="task__text">Не забыть забрать Мишу со школы</p>
+      </div>
+  
+      <div class="task task--shopping">
+        <div class="task__ready"></div>
+        <p class="task__text">Купить шоколад Маше</p>
+      </div>
+    </div>
+
+    <div class="category">
+      <h3 class="category__title">Списки</h3>
+      <ul class="category__list">
+        <li class="category__item category__item--gray" id="cat_warning">
+          <p class="category__name  category__name--black">Важное</p>
+          <p class="category__count category__count--black"><span></span> нет задач</p>
+        </li>
+        <li class="category__item category__item--green" id="cat_work">
+          <p class="category__name">Работа</p>
+          <p class="category__count"><span></span> нет задач</p>
+        </li>
+        <li class="category__item category__item--red" id="cat_shopping">
+          <p class="category__name">Покупки</p>
+          <p class="category__count"><span>2</span> задачи</p>
+        </li>
+        <li class="category__item category__item--yellow" id="cat_family">
+          <p class="category__name  category__name--black">Семья</p>
+          <p class="category__count category__count--black"> <span>1</span> задача</p>
+        </li>
+        <li class="category__item  category__item--violet" id="cat_personal">
+          <p class="category__name">Личное</p>
+          <p class="category__count"> <span></span> нет задач</p>
+        </li>
+      </ul>
+
+    </div>
+    
+
+    <div class="create">
+      
+      <ul class="create__items">
+        <li class="create__elems create__elems--task">Задача</li>
+        <li class="create__elems create__elems--list">Список</li>
+      </ul>
+
+      <button class="form__btn">+</button>
+
+    </div>
+
+   
+  </div>
+  <div class="overlay"></div>
+
+
+<!-- Шаблон -->
+  <div class="list-template">
+<!-- head -->
+    <div class="list-template__head">
+      <h2 class="list-template__title">Покупки</h2>
+      <span class="list-template__count"> <span>3</span> задачи</span>
+    </div>
+    <div class="delete-icon delete-icon--template"></div>
+
+<!--list -->
+    <div class="list-template__task-list">
+      <!-- 1 -->
+      <div class="list-template__task list-template__task--template">
+        <div class="list-template__task-ready"></div>
+        <p class="list-template__task-text">Начать делать презентацию</p>
+        <span class="list-template__task-date"></span>
+      </div>
+
+    </div>
+
+  </div>
+
+<!-- новый таск -->
+  <div class="new-task">
+    <div class="new-task__btn-wrapper">
+      <button class="new-task__btn">Отмена</button>
+      <button class="new-task__btn">Готово</button>
+    </div>
+    <ul class="new-task__list">
+      <li class="new-task__item">
+        <div class="new-task__ready"></div>
+        <input type="text" name="new-task" id="new-task-1" placeholder="Что нужно сделать ?">
+      </li>
+    </ul>
+
+    <ul class="new-task__cat-list">
+      <li class="new-task__cat-item  new-task__cat-item--gray">
+        <input type="radio" name="cat-item" id="cat-1" value="">Важное
+        <label for="cat-1"></label>
+      </li>
+      <li class="new-task__cat-item  new-task__cat-item--green">
+        <input type="radio" name="cat-item" id="cat-2" value="">Работа
+        <label for="cat-2"></label>
+      </li>
+      <li class="new-task__cat-item  new-task__cat-item--red">
+        <input type="radio" name="cat-item" id="cat-3" value="">Покупки
+        <label for="cat-3"></label>
+      </li>
+      <li class="new-task__cat-item  new-task__cat-item--yellow">
+        <input type="radio" name="cat-item" id="cat-4" value="">Семья
+        <label for="cat-4"></label>
+      </li>
+      <li class="new-task__cat-item  new-task__cat-item--violet">
+        <input type="radio" name="cat-item" id="cat-4" value="">Личное
+        <label for="cat-5"></label>
+      </li>
+    </ul>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

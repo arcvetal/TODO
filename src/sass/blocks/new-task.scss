@@ -1,0 +1,154 @@
+.new-task {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+
+  &__btn-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: -0.43px;
+    font-family: SF Pro Display;
+    outline: none;
+    color: $main-blue;
+    cursor: pointer;
+  }
+
+
+  &__list {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+
+    & input {
+      display: block;
+      flex-grow: 2;
+      border: none;
+      outline: none;
+      font-size: 18px;
+      line-height: 21px;
+      letter-spacing: -0.02em;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  &__ready {
+    width: 24px;
+    height: 24px;
+    margin-right: 18px;
+    box-sizing: border-box;
+    border: 2px solid $gray-color;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url(../../img/svg/mark.svg);
+    background-size: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.1s all;
+
+    &--done {
+      border: none;
+      background-size: 24px;
+      background-color: white;
+    }
+  }
+
+  &__cat-list {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__cat-item {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    padding-top: 12px;
+    padding-left: 16px;
+    cursor: pointer;
+
+
+    &--gray {
+      background-color: $main-gray;
+    }
+
+    &--green {
+      background-color: $main-green;
+    }
+
+    &--red {
+      background-color: $main-red;
+    }
+
+    &--yellow {
+      background-color: $main-yellow;
+    }
+
+    &--violet {
+      background-color: $main-violet;
+    }
+    
+
+
+    & input {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      outline: none;
+      font-size: 19px;
+      line-height: 21px;
+      letter-spacing: -0.46px;
+    }
+
+    & label {
+      position: absolute;
+      display: block;
+      right: 10px;
+      top: calc(50% - 11px);
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+    }
+
+    & input:checked + label {
+      background-image: url(../../img/svg/checked.svg);
+      background-size: 21px;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: 0.1s all;
+    }
+  }
+
+
+
+  
+
+}

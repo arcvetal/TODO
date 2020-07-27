@@ -1,0 +1,69 @@
+.category {
+  margin-left: 40px;
+
+  &__title {
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba($main-black, 0.3);
+    margin-bottom: 15px;
+  }
+
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: block;
+    box-sizing: border-box;
+    padding: 12px 16px 13px 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    color: rgba(white, 0.9);
+
+    &--gray {
+      background-color: $main-gray;
+    }
+
+    &--green {
+      background-color: $main-green;
+    }
+
+    &--red {
+      background-color: $main-red;
+    }
+
+    &--yellow {
+      background-color: $main-yellow;
+    }
+
+    &--violet {
+      background-color: $main-violet;
+    }
+
+  }
+
+  &__name {
+    font-size: 19px;
+    line-height: 23px;
+    letter-spacing: -0.46px;
+    color: rgba(white, 0.9);
+
+    &--black {
+      color: rgba($main-black, 0.9);
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.34px;
+    color: rgba(white, 0.5);
+
+    &--black {
+      color: rgba($main-black, 0.5);
+    }
+  }
+}

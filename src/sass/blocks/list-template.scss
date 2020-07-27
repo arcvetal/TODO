@@ -1,0 +1,66 @@
+.list-template {
+  position: absolute;
+  bottom: 10px;
+  display: none;
+  width: 80%;
+  height: 15vh;
+  bottom: 0;
+  left: 0;
+  margin: 50px 40px;
+  background-color: #F45E6D;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  &__task {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    vertical-align: middle;
+    position: relative;
+    padding-right: 15px;
+    transition: all 0.3s;
+
+    &--delete {
+      display: none;
+
+    }
+  }
+
+  &__task-ready {
+    width: 24px;
+    height: 24px;
+    margin-right: 18px;
+    box-sizing: border-box;
+    border: 2px solid $gray-color;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url(../../img/svg/mark.svg);
+    background-size: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.1s all;
+
+    &--done {
+      border: none;
+      background-size: 24px;
+      background-color: white;
+    }
+  }
+
+  &__task-text {
+    display: flex;
+    justify-content: left;
+    flex-grow: 1;
+    align-items: center;
+    padding: 19px 0;
+    font-size: 18px;
+    line-height: 21px;
+    border-bottom: 1px solid rgba(#252A31, 0.1);
+
+    &--done {
+      color: rgba($main-black, 0.4);
+      text-decoration: line-through;
+    }
+  }
+
+}
