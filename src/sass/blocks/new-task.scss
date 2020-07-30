@@ -83,15 +83,14 @@
   }
 
   &__cat-item {
+    position: relative;
     width: 100%;
     height: 70px;
     border-radius: 10px;
-    position: relative;
     box-sizing: border-box;
     margin-bottom: 8px;
     padding-top: 12px;
     padding-left: 16px;
-    cursor: pointer;
 
 
     &--gray {
@@ -118,14 +117,16 @@
 
     & input {
       display: block;
+      position: absolute;
       width: 100%;
       height: 100%;
-      position: absolute;
+      box-sizing: border-box;
       opacity: 0;
       outline: none;
       font-size: 19px;
       line-height: 21px;
       letter-spacing: -0.46px;
+      cursor: pointer;
     }
 
     & label {

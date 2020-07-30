@@ -371,10 +371,40 @@ var createNewTask = function() {
 
 // РАБОТА С НОВЫМ ТАСКОМ
 
-var inputNewTask = document.querySelector('#new-task-1');
+var createTask = function(current) {
+  if (!current) {
+    current = 0;
+  }
 
-inputNewTask.addEventListener('input', function(e){
-  console.log(e.target.value);
+  var newLi = document.createElement('li');
+  newLi.classList.add('new-task__item');
+  var newDiv = document.createElement('div');
+  newDiv.classList.add('new-task__ready');
+  var newInput = document.createElement('input');
+  newInput.id = 'new-task-' + current++;
+  newInput.name = 'new-task';
+  newInput.type = 'text';
+  newLi.appendChild(newDiv);
+  newLi.appendChild(newInput);
+
+  return newLi;
+
+};
+
+var inputNewTask = document.querySelector('#new-task-1');
+var itemTemplate = document.querySelector('.new-task__item');
+
+
+itemTemplate.addEventListener('input', function(e){
+  
+  var newTaskList = document.querySelector('.new-task__list');
+  console.dir(e.target);
+  if (e.target.value.length === 1) {
+    var newItemTemplate = createTask(0); 
+    newTaskList.appendChild(newItemTemplate);
+  } else if (e.target.value.length === 0) {
+    newItemTemplate.remove();
+  }
 
 });
 
