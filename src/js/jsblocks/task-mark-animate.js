@@ -372,18 +372,16 @@ var createNewTask = function() {
 // РАБОТА С НОВЫМ ТАСКОМ
 
 var createTask = function(current) {
-  if (!current) {
-    current = 0;
-  }
 
   var newLi = document.createElement('li');
   newLi.classList.add('new-task__item');
   var newDiv = document.createElement('div');
   newDiv.classList.add('new-task__ready');
   var newInput = document.createElement('input');
-  newInput.id = 'new-task-' + current++;
+  newInput.id = 'new-task-' + current;
   newInput.name = 'new-task';
   newInput.type = 'text';
+  newInput.placeholder = 'Что нужно сделать';
   newLi.appendChild(newDiv);
   newLi.appendChild(newInput);
 
@@ -392,21 +390,27 @@ var createTask = function(current) {
 };
 
 var inputNewTask = document.querySelector('#new-task-1');
-var itemTemplate = document.querySelector('.new-task__item');
+var itemTemplate = document.querySelector('.new-task__item input');
+var currentItem = 1;
 
+var appendInput = function (e) {
+    if (e.keyCode === 13) {
+      var newTaskList = document.querySelector('.new-task__list');
+      e.preventDefault();
+      currentItem = ++currentItem;
+      var newItemTemplate = createTask(currentItem);
+      
+      newItemTemplate.addEventListener('keydown', appendInput);
+      newTaskList.appendChild(newItemTemplate);
+      var tabItemm = newTaskList.querySelector('#new-task-' + currentItem);
+      tabItemm.focus();
+      e.target.removeEventListener('keydown', appendInput);
+      e.preventDefault();
+    }
 
-itemTemplate.addEventListener('input', function(e){
-  
-  var newTaskList = document.querySelector('.new-task__list');
-  console.dir(e.target);
-  if (e.target.value.length === 1) {
-    var newItemTemplate = createTask(0); 
-    newTaskList.appendChild(newItemTemplate);
-  } else if (e.target.value.length === 0) {
-    newItemTemplate.remove();
-  }
+}
 
-});
+itemTemplate.addEventListener('keydown', appendInput);
 
 
 
