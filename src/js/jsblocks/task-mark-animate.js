@@ -372,16 +372,13 @@ var createNewTask = function() {
 // СОЗДАНИЕ НОВОГО ИНПУТА ДЛЯ ЗАПИСИ
 
 var createTask = function(current) {
-  if (!current) {
-    current = 0;
-  }
 
   var newLi = document.createElement('li');
   newLi.classList.add('new-task__item');
   var newDiv = document.createElement('div');
   newDiv.classList.add('new-task__ready');
   var newInput = document.createElement('input');
-  newInput.id = 'new-task-' + ++current;
+  newInput.id = 'new-task-' + current;
   newInput.name = 'new-task';
   newInput.type = 'text';
   newInput.placeholder = 'Что нужно сделать ?';
@@ -392,34 +389,43 @@ var createTask = function(current) {
 
 };
 
+// 
+// 
+
+var removeInput = function (e) {
+  if (!e.target.value) {
+    e.target.remove();
+  }
+}
+
 var inputNewTask = document.querySelector('#new-task-1');
-var itemTemplate = document.querySelector('.new-task__item');
+var itemTemplate = document.querySelector('.new-task__item input');
+var currentItem = 1;
+
+var appendInput = function (e) {
+    if (e.keyCode === 13 && !e.target.value == 0 ) {
+      var newTaskList = document.querySelector('.new-task__list');
+      e.preventDefault();
+      currentItem = ++currentItem;
+      var newItemTemplate = createTask(currentItem);
+      
+      newItemTemplate.addEventListener('keydown', appendInput);
+      newTaskList.appendChild(newItemTemplate);
+      var tabItemm = newTaskList.querySelector('#new-task-' + currentItem);
+      tabItemm.focus();
+      e.target.removeEventListener('keydown', appendInput);
+      e.preventDefault();
+    }
 
 
-itemTemplate.addEventListener('keydown', function(e){
-  
-  var newTaskList = document.querySelector('.new-task__list');
+    if (e.target.value == 0 && e.keyCode === 8) {
+      e.target.parentNode.previousElementSibling.lastElementChild.focus();
+      e.target.parentNode.remove();
+    }
 
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    var newItemTemplate = createTask(0); 
-    newTaskList.appendChild(newItemTemplate);
- }
-  
-  // console.dir(e.target);
-  // if (e.target.value.length === 1) {
-  //   var newItemTemplate = createTask(0); 
-  //   newTaskList.appendChild(newItemTemplate);
-  // } else if (e.target.value.length === 0) {
-  //   newItemTemplate.remove();
-  // }
+}
 
-// удаление пустого инпута
-   // if (!e.target.value) {
-  //   itemTemplate.remove();
-  // }
-
-});
+itemTemplate.addEventListener('keydown', appendInput);
 
 
 
