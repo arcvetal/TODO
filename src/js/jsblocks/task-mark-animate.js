@@ -369,7 +369,7 @@ var createNewTask = function() {
 
 
 
-// РАБОТА С НОВЫМ ТАСКОМ
+// СОЗДАНИЕ НОВОГО ИНПУТА ДЛЯ ЗАПИСИ
 
 var createTask = function(current) {
   if (!current) {
@@ -381,9 +381,10 @@ var createTask = function(current) {
   var newDiv = document.createElement('div');
   newDiv.classList.add('new-task__ready');
   var newInput = document.createElement('input');
-  newInput.id = 'new-task-' + current++;
+  newInput.id = 'new-task-' + ++current;
   newInput.name = 'new-task';
   newInput.type = 'text';
+  newInput.placeholder = 'Что нужно сделать ?';
   newLi.appendChild(newDiv);
   newLi.appendChild(newInput);
 
@@ -395,16 +396,28 @@ var inputNewTask = document.querySelector('#new-task-1');
 var itemTemplate = document.querySelector('.new-task__item');
 
 
-itemTemplate.addEventListener('input', function(e){
+itemTemplate.addEventListener('keydown', function(e){
   
   var newTaskList = document.querySelector('.new-task__list');
-  console.dir(e.target);
-  if (e.target.value.length === 1) {
+
+  if (e.keyCode === 13) {
+    e.preventDefault();
     var newItemTemplate = createTask(0); 
     newTaskList.appendChild(newItemTemplate);
-  } else if (e.target.value.length === 0) {
-    newItemTemplate.remove();
-  }
+ }
+  
+  // console.dir(e.target);
+  // if (e.target.value.length === 1) {
+  //   var newItemTemplate = createTask(0); 
+  //   newTaskList.appendChild(newItemTemplate);
+  // } else if (e.target.value.length === 0) {
+  //   newItemTemplate.remove();
+  // }
+
+// удаление пустого инпута
+   // if (!e.target.value) {
+  //   itemTemplate.remove();
+  // }
 
 });
 
