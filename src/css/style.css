@@ -410,9 +410,11 @@ body {
     width: 100%;
     list-style: none;
     margin: 0;
+    margin-bottom: 20px;
     padding: 0; }
   .new-task__item {
-    display: flex; }
+    display: flex;
+    margin-bottom: 10px; }
     .new-task__item input {
       display: block;
       flex-grow: 2;
