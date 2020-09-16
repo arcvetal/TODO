@@ -393,6 +393,8 @@ body {
   align-items: center;
   flex-direction: column;
   z-index: 5; }
+  .new-task--hide {
+    display: none; }
   .new-task__btn-wrapper {
     display: flex;
     width: 100%;
@@ -406,6 +408,8 @@ body {
     outline: none;
     color: #006CFF;
     cursor: pointer; }
+    .new-task__btn--hide {
+      display: none; }
   .new-task__list {
     width: 100%;
     list-style: none;

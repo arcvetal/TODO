@@ -417,6 +417,10 @@ var appendInput = function (e) {
       e.preventDefault();
     }
 
+    if (e.keyCode === 13 && e.target.value == 0 ) {
+      e.preventDefault();
+    }
+
 
     if (e.target.value == 0 && e.keyCode === 8) {
       e.target.parentNode.previousElementSibling.lastElementChild.focus();
@@ -427,9 +431,28 @@ var appendInput = function (e) {
 
 itemTemplate.addEventListener('keydown', appendInput);
 
+//
+
+var newTaskScreen = document.querySelector('.new-task');
+var firstInput = document.querySelector('#new-task-1');
+var taskBtnDone = document.querySelector('.new-task__btn--done');
+var taskBtnCancel = document.querySelector('.new-task__btn--cancel');
+
+//ПОЯВЛЕНИЕ И СКРЫТИЕ КНОПКИ "ГОТОВО"
+
+firstInput.addEventListener('input', function (e) {
+  if (e.target.value) {
+    taskBtnDone.classList.remove('new-task__btn--hide');
+  } else {
+    taskBtnDone.classList.add('new-task__btn--hide');
+  }
+});
 
 
-
+taskBtnCancel.addEventListener('click', function (e) {
+  e.preventDefault();
+  newTaskScreen.classList.add('new-task--hide');
+});
 
 
 
