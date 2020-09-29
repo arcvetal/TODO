@@ -455,6 +455,23 @@ taskBtnCancel.addEventListener('click', function (e) {
 });
 
 
+taskBtnDone.addEventListener('click', function (e) {
+  e.preventDefault();
+  var currentTasks = {};
+  var category = document.querySelector('.new-task__cat-list input:checked');
+  var categoryValue = category.value;
+  var currentTasksList = document.querySelectorAll('.new-task__item input');
+  for (var i = 0; i < currentTasksList.length; i++) {
+    
+    if (currentTasksList[i].value) {
+      localStorage.setItem(currentTasksList[i].value,  categoryValue);
+    }
+    
+  }
 
+  console.log(localStorage);
+
+
+});
 
 

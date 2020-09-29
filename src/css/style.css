@@ -398,6 +398,7 @@ body {
   .new-task__btn-wrapper {
     display: flex;
     width: 100%;
+    margin-bottom: 20px;
     justify-content: space-between; }
   .new-task__btn {
     border: none;
@@ -445,6 +446,12 @@ body {
       border: none;
       background-size: 24px;
       background-color: white; }
+  .new-task__cat-title {
+    font-size: 20px;
+    line-height: 41px;
+    margin-bottom: 10px;
+    letter-spacing: normal;
+    margin-right: auto; }
   .new-task__cat-list {
     width: 100%;
     list-style: none;
