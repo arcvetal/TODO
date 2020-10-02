@@ -4,6 +4,38 @@ var deleteIcon = document.querySelector('.delete-icon');
 var deleteIconTemplate = document.querySelector('.delete-icon--template');
 var taskReadyArr = [].slice.call(taskList.querySelectorAll('.task__ready'));
 
+
+
+
+// var createTaskList = function (someObj) {
+
+//   var fragment = document.createDocumentFragment();
+
+//   for (var key in someObj) {
+//     var task = document.createElement('div');
+//     task.classList.add('task');
+//     var catClass = someObj.getItem(key);
+//     task.classList.add('task--' + catClass);
+    
+//     var taskReady = document.createElement('div');
+//     taskReady.classList.add('task__ready');
+//     task.appendChild(taskReady);
+
+//     var taskText = document.createElement('p');
+//     taskText.classList.add('task__text');
+//     taskText.textContent = key;
+//     task.appendChild(taskText);
+
+//     fragment.appendChild(task);
+//   }
+
+//   taskList.appendChild(fragment);
+// }
+
+
+// createTaskList(localStorage);
+
+
 // ГАЛОЧКА И ЗАЧЕРКИВАНИЕ ТАСКА
 
 var doneMark = document.querySelector('.task__ready--done');
