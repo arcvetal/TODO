@@ -4,6 +4,56 @@ var deleteIcon = document.querySelector('.delete-icon');
 var deleteIconTemplate = document.querySelector('.delete-icon--template');
 var taskReadyArr = [].slice.call(taskList.querySelectorAll('.task__ready'));
 
+var storage = localStorage;
+
+var dataList = {
+  "Начать делать презентацию": "work",
+  "Заплатить за аренду": "personal",
+  "Купить молоко": "shopping",
+  "Не забыть забрать Мишу со школы": "family",
+  "Купить шоколад Маше": "shopping"
+
+};
+
+storage.data = JSON.stringify(dataList);
+
+
+
+
+
+
+// ФОРМИРОВАНИЕ СТАРТОВОГО СПИСКА
+
+var renderMainList = function (obj) {
+  var fragment = document.createDocumentFragment();
+
+  for (key in obj) {
+
+    var taskItem = document.createElement('div');
+    taskItem.classList.add('task');
+    taskItem.classList.add('task--' + obj[key]);
+
+    var taskItemReady = document.createElement('div');
+    taskItemReady.classList.add('task__ready');
+    taskItem.appendChild(taskItemReady);
+
+    var taskItemText = document.createElement('p');
+    taskItemText.classList.add('task__text');
+    taskItemText.textContent = key;
+    taskItem.appendChild(taskItemText);
+
+    fragment.appendChild(taskItem);
+  }
+
+  taskList.appendChild(fragment);
+
+};
+
+renderMainList(JSON.parse(storage.data));
+
+
+
+
 // ГАЛОЧКА И ЗАЧЕРКИВАНИЕ ТАСКА
 
 var doneMark = document.querySelector('.task__ready--done');
@@ -455,23 +505,25 @@ taskBtnCancel.addEventListener('click', function (e) {
 });
 
 
+
 taskBtnDone.addEventListener('click', function (e) {
-  e.preventDefault();
-  var currentTasks = {};
-  var category = document.querySelector('.new-task__cat-list input:checked');
-  var categoryValue = category.value;
-  var currentTasksList = document.querySelectorAll('.new-task__item input');
-  for (var i = 0; i < currentTasksList.length; i++) {
-    
-    if (currentTasksList[i].value) {
-      localStorage.setItem(currentTasksList[i].value,  categoryValue);
+  e.preventDefault();  
+
+  var allNewItems = newTaskScreen.querySelectorAll('.new-task__item input');
+  var currentCategory = newTaskScreen.querySelector('.new-task__cat-item input:checked');
+  var categoryName = currentCategory.value;
+  var dataNewList = {};
+
+  for (var i = 0; i < allNewItems.length; i++) {
+    if (allNewItems[i].value) {
+      dataNewList[allNewItems[i].value] = categoryName;
     }
     
   }
+ 
+  storage.data = JSON.stringify(dataNewList);
+  newTaskScreen.classList.add('new-task--hide');
+  renderMainList(JSON.parse(storage.data));
 
-  console.log(localStorage);
-
-
-});
-
+})
 
