@@ -524,6 +524,6 @@ taskBtnDone.addEventListener('click', function (e) {
   storage.data = JSON.stringify(dataNewList);
   newTaskScreen.classList.add('new-task--hide');
   renderMainList(JSON.parse(storage.data));
-
+  updateData();
 });
 
