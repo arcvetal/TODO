@@ -22,7 +22,7 @@
     border-radius: 50%;
   }
 
-  &--inbox {
+  &--warning {
     &::after {
       background-color: $main-gray;
     }

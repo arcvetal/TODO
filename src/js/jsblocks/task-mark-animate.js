@@ -13,6 +13,7 @@ var dataList = {
   "Не забыть забрать Мишу со школы": "family",
   "Купить шоколад Маше": "shopping"
 
+
 };
 
 storage.data = JSON.stringify(dataList);
