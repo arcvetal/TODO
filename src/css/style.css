@@ -201,8 +201,8 @@ body {
     height: 12px;
     right: 0;
     border-radius: 50%; }
-  .task--inbox::after {
-    background-color: #EBEFF5; }
+  .task--warning::after {
+    background-color: #aaadc4; }
   .task--work::after {
     background-color: #61DEA4; }
   .task--shopping::after {
@@ -260,7 +260,7 @@ body {
     border-radius: 10px;
     color: rgba(255, 255, 255, 0.9); }
     .category__item--gray {
-      background-color: #EBEFF5; }
+      background-color: #aaadc4; }
     .category__item--green {
       background-color: #61DEA4; }
     .category__item--red {
@@ -469,7 +469,7 @@ body {
     padding-top: 12px;
     padding-left: 16px; }
     .new-task__cat-item--gray {
-      background-color: #EBEFF5; }
+      background-color: #aaadc4; }
     .new-task__cat-item--green {
       background-color: #61DEA4; }
     .new-task__cat-item--red {

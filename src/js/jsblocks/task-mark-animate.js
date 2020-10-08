@@ -1,4 +1,4 @@
-const taskList = document.querySelector('.task-list');
+const  taskList = document.querySelector('.task-list');
 var templateList = document.querySelector('.list-template__task-list');
 var deleteIcon = document.querySelector('.delete-icon');
 var deleteIconTemplate = document.querySelector('.delete-icon--template');
@@ -7,14 +7,15 @@ var taskReadyArr = [].slice.call(taskList.querySelectorAll('.task__ready'));
 
 var storage = localStorage;
 
-var dataList = {
+let startList = {
   "Начать делать презентацию": "work",
   "Заплатить за аренду": "personal",
   "Купить молоко": "shopping",
   "Не забыть забрать Мишу со школы": "family",
   "Купить шоколад Маше": "shopping"
-
 };
+
+var dataList = Object.assign(startList);
 
 storage.data = JSON.stringify(dataList);
 
@@ -100,6 +101,26 @@ onTaskDone(taskList);
 deleteIcon.addEventListener('click', function (e) {
   var taskDoneArr = [].slice.call(document.querySelectorAll('.task--done'));
 
+
+// ПРИ УДАЛЕНИИ ТАСКА УДАЛЯЕТСЯ ЗАПИСЬ В localStorage
+  var taskDoneTextArr = [];
+  for(let i = 0; i < taskDoneArr.length; i++) {
+    taskDoneTextArr[i] = taskDoneArr[i].lastChild.textContent;
+  }
+ 
+
+  let storageObj = JSON.parse(storage.data);
+ 
+
+  for (let index = 0; index < taskDoneTextArr.length; index++) {
+    if (storageObj.hasOwnProperty(taskDoneTextArr[index]) ) {
+      delete storageObj[taskDoneTextArr[index]];
+    }
+    
+  }
+
+  storage.data = JSON.stringify(storageObj);
+
   for (var i = 0; i < taskDoneArr.length; i++) {
     taskDoneArr[i].remove();
     
@@ -156,8 +177,8 @@ var callback = function(e){
   var targ = e.target;
 
   // фикс выбора карточки
-  if (event.target.parentElement.tagName === 'LI') {
-   targ = event.target.parentElement;
+  if (e.target.parentElement.tagName === 'LI') {
+   targ = e.target.parentElement;
   }
   
 
@@ -230,13 +251,6 @@ onTaskDone(templateTaskList);
 
 
 
-
-
-
-
-
-
-
 // Галочка и появление корзинки в карточке
 
 var onTaskDoneTemplate = function (wrapperNode) {
@@ -274,31 +288,21 @@ deleteIconTemplate.addEventListener('click', function (e) {
   for (var i = 0; i < taskDoneArr.length; i++) {
     textContentArr[i] = taskDoneArr[i].textContent;
     taskDoneArr[i].remove();
-    
   }
 
-  console.dir(textContentArr);
-
-
+  console.log(textContentArr);
 
   var tasksArr = [].slice.call(taskList.querySelectorAll('.task'));
 
   for (var i = 0; i < taskDoneArr.length; i++) {
-    
-
     for (var k = 0; k < tasksArr.length; k++) {
       if (tasksArr[k].textContent === taskDoneArr[i].textContent) {
         tasksArr[k].remove();
       }
-      
     }
-    
   }
 
-
-
   deleteIconTemplate.classList.remove('delete-icon--show');
-
 
   updateData();
 
@@ -507,8 +511,7 @@ taskBtnDone.addEventListener('click', function (e) {
   e.preventDefault();  
 
   var allNewItems = newTaskScreen.querySelectorAll('.new-task__item input');
-  var currentCategory = newTaskScreen.querySelector('.new-task__cat-item input:checked');
-  var categoryName = currentCategory.value;
+  let categoryName = newTaskScreen.querySelector('.new-task__cat-item input:checked').value;
   var dataNewList = {};
 
   for (var i = 0; i < allNewItems.length; i++) {
@@ -517,10 +520,12 @@ taskBtnDone.addEventListener('click', function (e) {
     }
     
   }
- 
-  storage.data = JSON.stringify(dataNewList);
+
+  let finalList = Object.assign(dataList, dataNewList);
+
+  storage.data = JSON.stringify(finalList);
   newTaskScreen.classList.add('new-task--hide');
   renderMainList(JSON.parse(storage.data));
-
-})
+  updateData();
+});
 
