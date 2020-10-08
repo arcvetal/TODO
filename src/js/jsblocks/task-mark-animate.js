@@ -1,8 +1,9 @@
-var taskList = document.querySelector('.task-list');
+const taskList = document.querySelector('.task-list');
 var templateList = document.querySelector('.list-template__task-list');
 var deleteIcon = document.querySelector('.delete-icon');
 var deleteIconTemplate = document.querySelector('.delete-icon--template');
 var taskReadyArr = [].slice.call(taskList.querySelectorAll('.task__ready'));
+
 
 var storage = localStorage;
 
@@ -16,10 +17,6 @@ var dataList = {
 };
 
 storage.data = JSON.stringify(dataList);
-
-
-
-
 
 
 // ФОРМИРОВАНИЕ СТАРТОВОГО СПИСКА
