@@ -160,8 +160,8 @@ var callback = function(e){
   var targ = e.target;
 
   // фикс выбора карточки
-  if (event.target.parentElement.tagName === 'LI') {
-   targ = event.target.parentElement;
+  if (e.target.parentElement.tagName === 'LI') {
+   targ = e.target.parentElement;
   }
   
 
@@ -274,22 +274,14 @@ deleteIconTemplate.addEventListener('click', function (e) {
   var taskDoneArr = [].slice.call(document.querySelectorAll('.list-template__task--done'));
 
   var textContentArr = [];
-  
   for (var i = 0; i < taskDoneArr.length; i++) {
     textContentArr[i] = taskDoneArr[i].textContent;
     taskDoneArr[i].remove();
     
   }
 
-  console.dir(textContentArr);
-
-
-
   var tasksArr = [].slice.call(taskList.querySelectorAll('.task'));
-
   for (var i = 0; i < taskDoneArr.length; i++) {
-    
-
     for (var k = 0; k < tasksArr.length; k++) {
       if (tasksArr[k].textContent === taskDoneArr[i].textContent) {
         tasksArr[k].remove();
@@ -503,6 +495,9 @@ firstInput.addEventListener('input', function (e) {
 taskBtnCancel.addEventListener('click', function (e) {
   e.preventDefault();
   newTaskScreen.classList.add('new-task--hide');
+
+  var taskDone = document.querySelector('.task__text');
+console.dir(taskDone.textContent);
 });
 
 
@@ -521,10 +516,12 @@ taskBtnDone.addEventListener('click', function (e) {
     }
     
   }
- 
+
   storage.data = JSON.stringify(dataNewList);
   newTaskScreen.classList.add('new-task--hide');
   renderMainList(JSON.parse(storage.data));
   updateData();
+
 });
+
 
