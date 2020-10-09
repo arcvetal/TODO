@@ -1,7 +1,7 @@
 const gulp = require('gulp'),
     watch = require('gulp-watch'),
     autoprefixer = require('gulp-autoprefixer'),
-    uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
     sass = require('gulp-sass'),
     rigger = require('gulp-rigger'),
     csso = require('gulp-csso'),
@@ -154,7 +154,7 @@ gulp.task('js:build', function () {
         .pipe(plumber()) // пламберим
         .pipe(rigger()) //Прогоним через rigger
         .pipe(sourcemaps.init()) //Инициализируем sourcemap
-        .pipe(uglify()) //Сожмем наш js
+        // .pipe(uglify()) //Сожмем наш js
         .pipe(sourcemaps.write()) //Пропишем карты
         // .pipe(rename('script.min.js'))
         .pipe(rename('main.js'))
