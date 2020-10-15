@@ -1,4 +1,4 @@
-const  taskList = document.querySelector('.task-list');
+const taskList = document.querySelector('.task-list');
 var templateList = document.querySelector('.list-template__task-list');
 var deleteIcon = document.querySelector('.delete-icon');
 var deleteIconTemplate = document.querySelector('.delete-icon--template');
@@ -48,6 +48,8 @@ var renderMainList = function (obj) {
 };
 
 renderMainList(JSON.parse(storage.data));
+
+
 
 
 
@@ -503,7 +505,7 @@ taskBtnCancel.addEventListener('click', function (e) {
   newTaskScreen.classList.add('new-task--hide');
 
   var taskDone = document.querySelector('.task__text');
-console.dir(taskDone.textContent);
+
 });
 
 
@@ -514,6 +516,12 @@ taskBtnDone.addEventListener('click', function (e) {
   var allNewItems = newTaskScreen.querySelectorAll('.new-task__item input');
   let categoryName = newTaskScreen.querySelector('.new-task__cat-item input:checked').value;
   var dataNewList = {};
+
+  let tasksArrRemove = taskList.querySelectorAll('.task');
+  for (let i = 0; i < tasksArrRemove.length; i++) {
+    tasksArrRemove[i].remove();
+    
+  }
 
   for (var i = 0; i < allNewItems.length; i++) {
     if (allNewItems[i].value) {

@@ -110,6 +110,12 @@
     margin-bottom: 8px;
     padding-top: 12px;
     padding-left: 16px;
+    cursor: pointer;
+    transition: all 0.05s ease-in;
+
+    &:hover {
+      transform: scaleX(1.01) scaleY(1.05);
+    }
 
 
     &--gray {

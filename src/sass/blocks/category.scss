@@ -1,5 +1,8 @@
 .category {
   margin-left: 40px;
+  position: fixed;
+  width: 75vw;
+  bottom: 20px;
 
   &__title {
     font-size: 16px;
@@ -22,6 +25,8 @@
     margin-bottom: 8px;
     border-radius: 10px;
     color: rgba(white, 0.9);
+    cursor: pointer;
+    transition: all 0.05s ease-in;
 
     &--gray {
       background-color: $main-gray;
@@ -41,6 +46,10 @@
 
     &--violet {
       background-color: $main-violet;
+    }
+
+    &:hover {
+      transform: scaleX(1.01) scaleY(1.05);
     }
 
   }
