@@ -30,6 +30,7 @@ var renderMainList = function (obj) {
     var taskItem = document.createElement('div');
     taskItem.classList.add('task');
     taskItem.classList.add('task--' + obj[key]);
+    taskItem.setAttribute('data-category', obj[key]);
 
     var taskItemReady = document.createElement('div');
     taskItemReady.classList.add('task__ready');
@@ -170,9 +171,6 @@ var templateDate = templateItem.querySelector('task__date');
 
 
 var categoryList = document.querySelector('.category__list');
-
-
-
 
 
 var callback = function(e){
@@ -325,7 +323,6 @@ var updateData = function () {
   for (var i = 0; i < categoriesArr.length; i++) {
     categoriesIdObj[categoriesArr[i].id.slice(4)] = 0;
   }
-  
 
   
   
@@ -338,6 +335,7 @@ var updateData = function () {
     
     for (var i = 0; i < array.length; i++) {
 
+      obj.all++;
       
       if (array[i].classList.contains('task--work')) {
         obj.work++;
@@ -540,3 +538,32 @@ taskBtnDone.addEventListener('click', function (e) {
 });
 
 
+// СООРТИРОВКА ВСЕГО СПИСКА ПО КАТЕГОРИЯМ
+
+categoryList.addEventListener('click', function (e) {
+  // console.dir(e.target);
+  let target = e.target.closest('li');
+  let chooseCategory = target.dataset.category;
+
+  let tasksArr = taskList.querySelectorAll('.task');
+
+  tasksArr.forEach((elem) => {
+    if (elem.classList.contains('task--delete')) {
+      elem.classList.remove('task--delete');
+    }
+    if (elem.dataset.category !== chooseCategory) {
+      elem.classList.add('task--delete');
+    }
+    
+  })
+
+  if (chooseCategory == 'all') {
+    tasksArr.forEach((elem) => {
+      if (elem.classList.contains('task--delete')) {
+        elem.classList.remove('task--delete');
+      }
+    })
+  }
+
+
+});
