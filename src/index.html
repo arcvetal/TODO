@@ -11,30 +11,7 @@
     <h1 class="app__title">Задачи</h1>
     <div class="delete-icon"></div>
     <div class="task-list">
-      <!-- <div class="task task--work">
-        <div class="task__ready"></div>
-        <p class="task__text">Начать делать презентацию</p>
-      </div>
-  
-      <div class="task task--personal task--done">
-        <div class="task__ready task__ready--done"></div>
-        <p class="task__text task__text--done">Заплатить за аренду</p>
-      </div>
-  
-      <div class="task task--shopping">
-        <div class="task__ready"></div>
-        <p class="task__text">Купить молоко</p>
-      </div>
-  
-      <div class="task task--family">
-        <div class="task__ready"></div>
-        <p class="task__text">Не забыть забрать Мишу со школы</p>
-      </div>
-  
-      <div class="task task--shopping">
-        <div class="task__ready"></div>
-        <p class="task__text">Купить шоколад Маше</p>
-      </div> -->
+<!-- Сюда встанет список задач -->
     </div>
 
     <div class="category">
@@ -53,8 +30,8 @@
           <p class="category__count category__count--black"><span></span> нет задач</p>
         </li>
         <li class="category__item category__item--green" id="cat_work" data-category="work">
-          <p class="category__name">Работа</p>
-          <p class="category__count"><span></span> нет задач</p>
+          <p class="category__name  category__name--black">Работа</p>
+          <p class="category__count  category__count--black"><span></span> нет задач</p>
         </li>
         <li class="category__item category__item--red" id="cat_shopping" data-category="shopping">
           <p class="category__name">Покупки</p>
@@ -84,7 +61,6 @@
 
     </div>
 
-   
   </div>
   <div class="overlay"></div>
 
@@ -112,7 +88,7 @@
   </div>
 
 <!-- ОКНО НОВОГО ТАСКА -->
-  <form class="new-task">
+  <form class="new-task  new-task--hide">
     <div class="new-task__btn-wrapper">
       <button class="new-task__btn  new-task__btn--cancel">Отмена</button>
       <button class="new-task__btn  new-task__btn--done new-task__btn--hide">Готово</button>

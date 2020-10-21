@@ -298,9 +298,9 @@ body {
     font-size: 14px;
     line-height: 17px;
     letter-spacing: -0.34px;
-    color: rgba(255, 255, 255, 0.5); }
+    color: rgba(255, 255, 255, 0.8); }
     .category__count--black {
-      color: rgba(37, 42, 49, 0.5); }
+      color: rgba(37, 42, 49, 0.8); }
 
 .create {
   position: fixed;
@@ -336,7 +336,7 @@ body {
     .create__elems:first-child {
       box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.1); }
     .create__elems:hover {
-      box-shadow: 0px 0px 10px 4px rgba(90, 153, 202, 0.15) inset; }
+      box-shadow: 0 0 18px 1px rgba(90, 153, 202, 0.35) inset; }
     .create__elems::before {
       display: block;
       position: absolute;

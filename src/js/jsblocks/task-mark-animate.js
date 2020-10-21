@@ -3,6 +3,7 @@ var templateList = document.querySelector('.list-template__task-list');
 var deleteIcon = document.querySelector('.delete-icon');
 var deleteIconTemplate = document.querySelector('.delete-icon--template');
 var taskReadyArr = [].slice.call(taskList.querySelectorAll('.task__ready'));
+const newTask = document.querySelector('.create__elems--task');
 
 
 var storage = localStorage;
@@ -150,6 +151,13 @@ formBtn.addEventListener('click', function(e){
   btnList.classList.toggle('create__items--active');
   overlay.classList.toggle('overlay--active');
 });
+
+overlay.addEventListener('click', function(e){
+  formBtn.classList.toggle('form__btn--active');
+  btnList.classList.toggle('create__items--active');
+  overlay.classList.toggle('overlay--active');
+})
+
 // 
 // 
 
@@ -565,5 +573,11 @@ categoryList.addEventListener('click', function (e) {
     })
   }
 
-
 });
+
+newTask.addEventListener('click', (e) => {
+  newTaskScreen.classList.remove('new-task--hide');
+  formBtn.classList.toggle('form__btn--active');
+  btnList.classList.toggle('create__items--active');
+  overlay.classList.toggle('overlay--active');
+})
