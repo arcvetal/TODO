@@ -9,16 +9,26 @@ const newTask = document.querySelector('.create__elems--task');
 var storage = localStorage;
 
 let startList = {
-  "Начать делать презентацию": "work",
-  "Заплатить за аренду": "personal",
-  "Купить молоко": "shopping",
-  "Не забыть забрать Мишу со школы": "family",
-  "Купить шоколад Маше": "shopping"
+  // "Начать делать презентацию": "work",
+  // "Заплатить за аренду": "personal",
+  // "Купить молоко": "shopping",
+  // "Не забыть забрать Мишу со школы": "family",
+  // "Купить шоколад Маше": "shopping"
 };
 
-var dataList = Object.assign(startList);
+// var dataList = Object.assign(startList);
 
-storage.data = JSON.stringify(dataList);
+// storage.data = JSON.stringify(dataList);
+
+var funcObj = {
+  appendTaskToStorage: function (obj) {
+    for (const key in obj) {
+      storage.setItem(key, obj[key]);
+    }
+  }
+}
+
+funcObj.appendTaskToStorage(startList);
 
 
 // ФОРМИРОВАНИЕ СТАРТОВОГО СПИСКА
@@ -27,29 +37,33 @@ var renderMainList = function (obj) {
   var fragment = document.createDocumentFragment();
 
   for (key in obj) {
+    if (obj.getItem(key) !== null) {
 
-    var taskItem = document.createElement('div');
-    taskItem.classList.add('task');
-    taskItem.classList.add('task--' + obj[key]);
-    taskItem.setAttribute('data-category', obj[key]);
+      var taskItem = document.createElement('div');
+      taskItem.classList.add('task');
+      taskItem.classList.add('task--' + obj[key]);
+      taskItem.setAttribute('data-category', obj[key]);
 
-    var taskItemReady = document.createElement('div');
-    taskItemReady.classList.add('task__ready');
-    taskItem.appendChild(taskItemReady);
+      var taskItemReady = document.createElement('div');
+      taskItemReady.classList.add('task__ready');
+      taskItem.appendChild(taskItemReady);
 
-    var taskItemText = document.createElement('p');
-    taskItemText.classList.add('task__text');
-    taskItemText.textContent = key;
-    taskItem.appendChild(taskItemText);
+      var taskItemText = document.createElement('p');
+      taskItemText.classList.add('task__text');
+      taskItemText.textContent = key;
+      taskItem.appendChild(taskItemText);
 
-    fragment.appendChild(taskItem);
+      fragment.appendChild(taskItem);
+
+    }
+
   }
 
   taskList.appendChild(fragment);
 
 };
 
-renderMainList(JSON.parse(storage.data));
+renderMainList(storage);
 
 
 
@@ -113,17 +127,21 @@ deleteIcon.addEventListener('click', function (e) {
   }
  
 
-  let storageObj = JSON.parse(storage.data);
+  // let storageObj = JSON.parse(storage.data);
  
 
   for (let index = 0; index < taskDoneTextArr.length; index++) {
-    if (storageObj.hasOwnProperty(taskDoneTextArr[index]) ) {
-      delete storageObj[taskDoneTextArr[index]];
+
+    for (const key in storage) {
+      if (key == taskDoneTextArr[index] ) {
+        storage.removeItem(key);
+      }
     }
+   
     
   }
 
-  storage.data = JSON.stringify(storageObj);
+  // storage.data = JSON.stringify(storageObj);
 
   for (var i = 0; i < taskDoneArr.length; i++) {
     taskDoneArr[i].remove();
@@ -531,16 +549,16 @@ taskBtnDone.addEventListener('click', function (e) {
 
   for (var i = 0; i < allNewItems.length; i++) {
     if (allNewItems[i].value) {
-      dataNewList[allNewItems[i].value] = categoryName;
+      storage.setItem(allNewItems[i].value, categoryName);
     }
     
   }
 
-  let finalList = Object.assign(dataList, dataNewList);
+  // let finalList = Object.assign(dataList, dataNewList);
 
-  storage.data = JSON.stringify(finalList);
+  // storage.data = JSON.stringify(finalList);
   newTaskScreen.classList.add('new-task--hide');
-  renderMainList(JSON.parse(storage.data));
+  renderMainList(storage);
   updateData();
 
 });
